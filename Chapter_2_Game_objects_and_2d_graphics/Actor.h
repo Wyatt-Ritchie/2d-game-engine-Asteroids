@@ -1,0 +1,68 @@
+#pragma once
+#include <vector>
+#include "Math.h"
+#include "Game.h"
+class Actor
+{
+public:
+	// track state of actor
+	enum State
+	{
+		EActive,
+		EPaused,
+		EDead
+	};
+
+	//default constructor/destructor
+	Actor(class Game* game);
+
+	virtual ~Actor();
+
+	// update function called from Game (not override)
+	void Update(float deltaTime);
+
+	// updates all the components attached to the actor
+	void UpdateComponents(float deltaTime);
+
+	// Any actor specific update code (override)
+	virtual void UpdateActor(float deltaTime);
+
+	// getters/setters
+	Vector2 GetPosition() const { return mPosition; };
+
+	void SetPosition(Vector2 position);
+	void SetScale(float scale);
+	void SetRotation(float rotation) { mRotation = rotation; }
+
+	// Add/remove components
+	void AddComponent(class Component* component);
+
+	void RemoveComponent(class Component* component);
+
+	Game* GetGame() const { return mGame; };
+
+	std::vector<class Component*> GetComponents() { return mComponents; };
+
+	State getState();
+
+	float GetScale() const { return mScale; };
+	float GetRotation() const { return mRotation; };
+	Vector2 GetForward() const { return Vector2(Math::Cos(mRotation), -Math::Sin(mRotation)); }
+	
+private:
+	// Actor's state
+	State mState;
+
+	// Transform
+	Vector2 mPosition; // center position of actor
+
+	float mScale;	   // Uiform scale of actor
+
+	float mRotation;   // Rotation angle in radians
+
+	// Componenets held by this actor
+	std::vector<class Component*> mComponents;
+
+	class Game* mGame;
+};
+
