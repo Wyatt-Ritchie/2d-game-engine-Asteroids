@@ -34,7 +34,7 @@ void SpriteComponent::Draw(SDL_Renderer* renderer)
 			mTexture,
 			nullptr,
 			&r,
-			-Math::ToDegrees(mOwner->GetRoation()),
+			-Math::ToDegrees(mOwner->GetRotation()),
 			nullptr,
 			SDL_FLIP_NONE);
 	}

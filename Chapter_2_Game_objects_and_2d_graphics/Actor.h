@@ -2,6 +2,7 @@
 #include <vector>
 #include "Math.h"
 #include "Game.h"
+#include <cstdint>
 class Actor
 {
 public:
@@ -48,6 +49,10 @@ public:
 	float GetScale() const { return mScale; };
 	float GetRotation() const { return mRotation; };
 	Vector2 GetForward() const { return Vector2(Math::Cos(mRotation), -Math::Sin(mRotation)); }
+
+	void ProcessInput(const uint8_t* keyState);
+
+	virtual void ActorInput(const uint8_t* keyState);
 	
 private:
 	// Actor's state

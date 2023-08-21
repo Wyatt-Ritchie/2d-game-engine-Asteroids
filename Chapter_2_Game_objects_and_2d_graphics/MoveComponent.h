@@ -3,8 +3,8 @@
 class MoveComponent : public Component
 {
 public:
-	MoveComponent(class Actor actor, int updateOrder);
-	~MoveComponent();
+	MoveComponent(class Actor* actor);
+	
 
 	void Update(float deltaTime) override;
 

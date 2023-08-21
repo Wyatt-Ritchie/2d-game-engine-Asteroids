@@ -4,9 +4,10 @@
 #include "SDL_image.h"
 #include "Math.h"
 #include "BGSpriteComponent.h"
-#include "Ship.h"
+#include "Asteroid.h"
 #include <iostream>
 #include <vector>
+#include "Ship.h"
 Game::Game() : mWindow(nullptr),
 			   mRenderer(nullptr), 
 			   mIsRunning(true),
@@ -90,7 +91,12 @@ void Game::ProcessInput()
 		mIsRunning = false;
 	}
 
-	mShip->ProcessKeyboard(state);
+	mUpdatingActors = true;
+	for (auto actor : mActors)
+	{
+		actor->ProcessInput(state);
+	}
+	mUpdatingActors = false;
 }
 
 // implementation of the game loop function. 
@@ -255,10 +261,14 @@ SDL_Texture* Game::GetTexture(const std::string& fileName)
 
 void Game::LoadData()
 {
-	mShip = new Ship(this);
-	mShip->SetPosition(Vector2(100.0f, 384.0f));
-	mShip->SetScale(1.5f);
-
+	
+	const int numAsteroids = 10;
+	for (int i = 0; i < numAsteroids; i++)
+	{
+		Asteroid* aa = new Asteroid(this);
+		
+	}
+	Ship* ship = new Ship(this);
 	// Set temp background 
 	Actor* temp = new Actor(this);
 	temp->SetPosition(Vector2(512.0f, 384.0f));

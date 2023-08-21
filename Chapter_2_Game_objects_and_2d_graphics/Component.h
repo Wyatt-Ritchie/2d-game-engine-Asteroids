@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdint>
 class Component
 {
 public:
@@ -11,6 +12,8 @@ public:
 
 	//update this component by delta time
 	virtual void Update(float deltaTime);
+
+	virtual void ProcessInput(const std::uint8_t* keyState) {}
 
 	int GetUpdateOrder() const { return mUpdateOrder; }
 protected:
