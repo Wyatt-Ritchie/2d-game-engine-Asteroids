@@ -23,6 +23,8 @@ public:
 	void RemoveSprite(class SpriteComponent* sprite);
 	void AddAsteroid(class Asteroid* ast);
 	void RemoveAsteroid(class Asteroid* ast);
+	void ResetShip();
+	void SetShipDead() { mShipDead = true; }
 	std::vector<class Asteroid*> GetAsteroids() const { return mAsteroids; }
 
 	SDL_Texture* GetTexture(const std::string& fileName);
@@ -56,6 +58,8 @@ private:
 	std::vector<class Actor*> mPendingActors;
 	std::vector<class SpriteComponent*> mSprites;
 	std::vector<class Asteroid*> mAsteroids;
+	float mRespawnTimer;
+	bool mShipDead;
 
 	int mTicksCount;
 	std::unordered_map<std::string, SDL_Texture*> mTextures;

@@ -11,7 +11,6 @@ Laser::Laser(Game* game) : Actor(game)
 	// add sprite component
 	SpriteComponent* sc = new SpriteComponent(this);
 	sc->setTexture(game->GetTexture("Assets/Laser.png"));
-	std::cout << "spawn laser" << std::endl;
 
 	// add circle component
 	mCircle = new CircleComponent(this);
@@ -38,7 +37,6 @@ void Laser::UpdateActor(float deltaTime)
 		{
 			if (Intersect(*mCircle, *(ast->GetCircle())))
 			{
-				std::cout << "Hit" << std::endl;
 				// The first asteroid we intersect with,
 				// set ourselves and the asteroid to dead
 				SetState(EDead);

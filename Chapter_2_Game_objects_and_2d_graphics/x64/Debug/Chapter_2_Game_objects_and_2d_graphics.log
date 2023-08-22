@@ -1,6 +1,2 @@
-﻿  Asteroid.cpp
-  CircleComponent.cpp
-  Game.cpp
-  Generating Code...
-E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\CircleComponent.cpp(13): warning C4172: returning address of local variable or temporary: pos
+﻿  Ship.cpp
   Chapter_2_Game_objects_and_2d_graphics.vcxproj -> E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Chapter_2_Game_objects_and_2d_graphics.exe

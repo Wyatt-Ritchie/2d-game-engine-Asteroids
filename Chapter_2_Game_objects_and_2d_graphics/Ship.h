@@ -11,5 +11,7 @@ public:
 
 private:
 	float mLaserCooldown;
+	float mRespawnTimer;
+	class CircleComponent* mCircle;
 };
 

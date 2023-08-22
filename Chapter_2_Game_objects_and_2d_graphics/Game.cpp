@@ -11,7 +11,9 @@
 Game::Game() : mWindow(nullptr),
 			   mRenderer(nullptr), 
 			   mIsRunning(true),
-			   mUpdatingActors(false)
+			   mUpdatingActors(false),
+			   mRespawnTimer(1.0f),
+			   mShipDead(false)
 	           
 {
 	
@@ -164,6 +166,12 @@ void Game::UpdateGame()
 	{
 		delete actor;
 	}
+
+	if (mShipDead == true)
+	{
+		mRespawnTimer -= deltaTime;
+	}
+	ResetShip();
 }
 
 void Game::GenerateOutput() 
@@ -331,6 +339,17 @@ void Game::RemoveAsteroid(Asteroid* ast)
 	{
 		mAsteroids.erase(iter);
 	}
+}
+
+void Game::ResetShip()
+{
+	if (mRespawnTimer <= 0)
+	{
+		Ship* ship = new Ship(this);
+		mRespawnTimer = 1.0f;
+		mShipDead = false;
+	}
+	
 }
 
 void Game::RemoveActor(Actor* actor)
