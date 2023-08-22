@@ -2,9 +2,11 @@ E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\A
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\AnimateSpriteComponent.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\AnimateSpriteComponent.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\Asteroid.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Asteroid.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\BGSpriteComponent.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\BGSpriteComponent.obj
+E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\CircleComponent.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\CircleComponent.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\Component.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Component.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\Game.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Game.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\InputComponent.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\InputComponent.obj
+E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\Laser.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Laser.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\Main.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Main.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\Math.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\Math.obj
 E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\MoveComponent.cpp;E:\Wyatt\Programming\c++\2d-game-engine\Chapter_2_Game_objects_and_2d_graphics\x64\Debug\MoveComponent.obj

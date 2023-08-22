@@ -4,7 +4,9 @@
 #include "Game.h"
 #include <iostream>
 #include "InputComponent.h"
+#include "Laser.h"
 Ship::Ship(Game* game) : Actor(game)
+						,mLaserCooldown(0.0f)
 {
 	// create animated sprite component
 	AnimateSpriteComponent* shipAsc = new AnimateSpriteComponent(this);
@@ -14,6 +16,7 @@ Ship::Ship(Game* game) : Actor(game)
 		game->GetTexture("Assets/Ship03.png"),
 		game->GetTexture("Assets/Ship04.png")
 	};
+	SetPosition(Vector2(512.0f, 384.0f));
 	shipAsc->SetAnimFPS(24.0f);
 	shipAsc->SetAnimationTextures(shipAnims, "ship", true);
 	shipAsc->SetCurrentAnimation("ship");
@@ -27,12 +30,19 @@ Ship::Ship(Game* game) : Actor(game)
 
 void Ship::UpdateActor(float deltaTime)
 {
-	Actor::UpdateActor(deltaTime);
+	mLaserCooldown -= deltaTime;
 	
 }
 
 void Ship::ActorInput(const uint8_t* keyState)
 {
-
+	
+	if (keyState[SDL_SCANCODE_SPACE] && mLaserCooldown <= 0.0f)
+	{
+		Laser* laser = new Laser(GetGame());
+		laser->SetPosition(GetPosition());
+		laser->SetRotation(GetRotation());
+		mLaserCooldown = 0.5;
+	}
 }
 

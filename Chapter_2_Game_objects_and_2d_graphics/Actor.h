@@ -45,6 +45,7 @@ public:
 	std::vector<class Component*> GetComponents() { return mComponents; };
 
 	State getState();
+	void SetState(State state) { mState = state; }
 
 	float GetScale() const { return mScale; };
 	float GetRotation() const { return mRotation; };

@@ -151,7 +151,7 @@ public:
 	// Length squared of vector
 	float LengthSq() const
 	{
-		return (x * x + y * y);
+		return ((x * x) + (y * y));
 	}
 
 	// Length of vector

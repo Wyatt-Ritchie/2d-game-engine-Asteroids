@@ -19,7 +19,7 @@ void InputComponent::ProcessInput(const uint8_t* keyState)
 	if (keyState[mBackKey])
 	{
 		forwardSpeed -= mMaxForwardSpeed;
-	}
+	} 
 
 	SetForwardSpeed(forwardSpeed);
 

@@ -265,9 +265,9 @@ void Game::LoadData()
 	const int numAsteroids = 10;
 	for (int i = 0; i < numAsteroids; i++)
 	{
-		Asteroid* aa = new Asteroid(this);
-		
+		new Asteroid(this);
 	}
+
 	Ship* ship = new Ship(this);
 	// Set temp background 
 	Actor* temp = new Actor(this);
@@ -317,6 +317,20 @@ void Game::UnloadData()
 	}
 	mTextures.clear();
 	std::cout << "Textures cleared" << std::endl;
+}
+
+void Game::AddAsteroid(Asteroid* ast)
+{
+	mAsteroids.emplace_back(ast);
+}
+
+void Game::RemoveAsteroid(Asteroid* ast)
+{
+	auto iter = std::find(mAsteroids.begin(), mAsteroids.end(), ast);
+	if (iter != mAsteroids.end())
+	{
+		mAsteroids.erase(iter);
+	}
 }
 
 void Game::RemoveActor(Actor* actor)
