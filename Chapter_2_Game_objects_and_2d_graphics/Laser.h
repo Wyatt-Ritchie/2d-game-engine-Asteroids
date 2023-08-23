@@ -4,7 +4,7 @@ class Laser : public Actor
 {
 public:
 
-	Laser(class Game* game);
+	Laser(class Game* game, Vector2 forward);
 	void UpdateActor(float deltaTime) override;
 	
 

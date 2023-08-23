@@ -1,8 +1,10 @@
 #include "InputComponent.h"
 #include "Math.h"
+#include <iostream>
+#include "Actor.h"
 InputComponent::InputComponent(Actor* actor) : MoveComponent(actor)
 											  ,mMaxAngularSpeed(Math::Pi)
-											  ,mMaxForwardSpeed(150.0f)
+											  
 											  
 {
 }
@@ -10,18 +12,16 @@ InputComponent::InputComponent(Actor* actor) : MoveComponent(actor)
 void InputComponent::ProcessInput(const uint8_t* keyState)
 {
 	// calculate the forward speed of movecomponent
-	float forwardSpeed = 0.0f;
 
 	if (keyState[mForwardKey])
 	{
-		forwardSpeed += mMaxForwardSpeed;
+		if (GetVelocity().Length() < (mOwner->GetForward()*GetMaxVelocity()).Length())
+		{
+			float mag = 80.0f;
+			Vector2 forward = mOwner->GetForward();
+			AddForce(forward * mag);
+		}
 	}
-	if (keyState[mBackKey])
-	{
-		forwardSpeed -= mMaxForwardSpeed;
-	} 
-
-	SetForwardSpeed(forwardSpeed);
 
 	float angularSpeed = 0.0f;
 	if (keyState[mClockwiseKey])

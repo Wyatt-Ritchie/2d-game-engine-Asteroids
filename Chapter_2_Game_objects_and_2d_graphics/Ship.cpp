@@ -26,9 +26,13 @@ Ship::Ship(Game* game) : Actor(game)
 	
 	InputComponent* ic = new InputComponent(this);
 	ic->SetForwardKey(SDL_SCANCODE_W);
-	ic->SetBackKey(SDL_SCANCODE_S);
 	ic->SetClockwiseKey(SDL_SCANCODE_A);
 	ic->SetCounterClockwiseKey(SDL_SCANCODE_D);
+	ic->SetAcceleration(Vector2(0.0f, 0.0f));
+	ic->SetMass(10.0f);
+	ic->SetDamper(0.999f);
+	ic->SetVelocity(Vector2(0.0f, 0.0f));
+	
 
 	// add collison component
 	mCircle = new CircleComponent(this);
@@ -59,7 +63,7 @@ void Ship::ActorInput(const uint8_t* keyState)
 	
 	if (keyState[SDL_SCANCODE_SPACE] && mLaserCooldown <= 0.0f)
 	{
-		Laser* laser = new Laser(GetGame());
+		Laser* laser = new Laser(GetGame(), GetForward());
 		laser->SetPosition(GetPosition());
 		laser->SetRotation(GetRotation());
 		mLaserCooldown = 0.5;

@@ -9,17 +9,12 @@ public:
 	void ProcessInput(const std::uint8_t* keyState) override;
 
 	// Getters/setter for private vars
-	void SetMaxForwardSpeed(float speed) { mMaxForwardSpeed = speed; }
-	float GetMaxForwardSpeed() const { return mMaxForwardSpeed; }
 
 	void SetMaxAngularSpeed(float speed) { mMaxAngularSpeed = speed; }
 	float GetMaxAngularSpeed() const { return mMaxAngularSpeed; }
 	
 	void SetForwardKey(int key) { mForwardKey = key; }
 	int GetForwardKey() const { return mForwardKey; }
-
-	void SetBackKey(int key) { mBackKey = key; }
-	int GetBackKey() const { return mBackKey; }
 
 	void SetClockwiseKey(int key) { mClockwiseKey = key; }
 	int GetClockwiseKey() const { return mClockwiseKey; }
@@ -29,13 +24,10 @@ public:
 
 private:
 	// max speeds
-	float mMaxForwardSpeed;
 
 	float mMaxAngularSpeed;
 
 	int mForwardKey;
-
-	int mBackKey;
 
 	// keys for angular movement
 

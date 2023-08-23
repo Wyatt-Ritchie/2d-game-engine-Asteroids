@@ -4,9 +4,9 @@
 #include "MoveComponent.h"
 #include "Asteroid.h"
 #include <iostream>
-
-Laser::Laser(Game* game) : Actor(game) 
-						 ,mLaserLife(1.0f)
+#include "Actor.h"
+Laser::Laser(Game* game, Vector2 forward) : Actor(game) 
+						   ,mLaserLife(1.0f)				
 {
 	// add sprite component
 	SpriteComponent* sc = new SpriteComponent(this);
@@ -18,7 +18,11 @@ Laser::Laser(Game* game) : Actor(game)
 
 	// add move component
 	MoveComponent* mc = new MoveComponent(this);
-	mc->SetForwardSpeed(800.0f);
+	mc->SetAcceleration(Vector2(0.0f, 0.0f));
+	mc->SetDamper(0.9999f);
+	mc->SetMass(0.1f);
+	mc->SetMaxVelocity(800.0f);
+	mc->SetVelocity(forward * 800.0f);
 }
 
 void Laser::UpdateActor(float deltaTime)

@@ -1,11 +1,57 @@
 #include "MoveComponent.h"
 #include "Math.h"
 #include "Actor.h"
-
+#include <iostream>
+#define real_pow powf
 MoveComponent::MoveComponent(Actor* actor) : Component(actor)
 											,mAngularSpeed(0.0f)
-											,mForwardSpeed(0.0f)
+											,mMass(1.0f)
+											,mSumOfForces(Vector2(0.0f, 0.0f))
+											,mAcceleration(Vector2(0.0f, 0.0f))
+											,mVelocity(Vector2(0.0f, 0.0f))
+											,mMaxVelocity(150.0f)
+											
 {
+	SetInvMass();
+}
+
+// Damper value must be <=1 and > 0
+void MoveComponent::SetDamper(float damper)
+{
+	if (damper <= 1.0f && damper > 0.0f)
+	{
+		mDamper = damper;
+	}
+	else
+	{
+		std::cout << "Please set damper within the bounds of 0.0 to 1.0" << std::endl;
+	}
+}
+
+void MoveComponent::ClearForces()
+{
+	mSumOfForces.x = 0.0f;
+	mSumOfForces.y = 0.0f;
+}
+
+void MoveComponent::Integrator(float deltaTime)
+{
+	// calculate the position of the particle
+	Vector2 pos = mOwner->GetPosition();
+	pos += mVelocity * deltaTime;
+	mOwner->SetPosition(pos);
+
+	// Work out acceleration from the forces
+	mAcceleration = mSumOfForces * mInvMass;
+
+	// update velocity
+	mVelocity += mAcceleration * deltaTime;
+
+	// impose dampening/drag
+	mVelocity *= real_pow(mDamper, deltaTime);
+
+	// clear forces
+	ClearForces();
 }
 
 void MoveComponent::Update(float deltaTime)
@@ -16,18 +62,14 @@ void MoveComponent::Update(float deltaTime)
 		rot += mAngularSpeed * deltaTime;
 		mOwner->SetRotation(rot);
 	}
-
-	if (!Math::NearZero(mForwardSpeed))
-	{
-		Vector2 pos = mOwner->GetPosition();
-		pos += mOwner->GetForward() * mForwardSpeed * deltaTime;
-		mOwner->SetPosition(pos);
-	}
+	
+	Integrator(deltaTime);
+	
 
 	// For asteroid game we can include some code for screen wrapping
 	// for generic funcitions we do not include this.
 
-	// Asteroid wrapping code
+	// Asteroids wrapping code
 	Vector2 pos = mOwner->GetPosition();
 	if (pos.x < -16)
 	{
