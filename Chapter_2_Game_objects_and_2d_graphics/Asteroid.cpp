@@ -25,6 +25,7 @@ Asteroid::Asteroid(Game* game) : Actor(game)
 	mc->SetAcceleration(Vector2(0.0f, 0.0f));
 	mc->SetMaxVelocity(150.0f);
 	mc->SetVelocity(Vector2(Random::GetFloatRange(-150.0f, 150.0f), Random::GetFloatRange(-150.0f, 150.0f)));
+	mc->SetAngularSpeed(Random::GetFloatRange(0.0f, Math::TwoPi));
 
 
 	mCircle = new CircleComponent(this);

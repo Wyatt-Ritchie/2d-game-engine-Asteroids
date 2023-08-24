@@ -26,6 +26,7 @@ void SpriteComponent::Draw(SDL_Renderer* renderer)
 		r.w = static_cast<int>(mTexWidth * mOwner->GetScale());
 		r.h = static_cast<int>(mTexHeight * mOwner->GetScale());
 		// Center the rectangle around the position of the owner
+		float rot = mOwner->GetRotation();
 		r.x = static_cast<int>(mOwner->GetPosition().x - r.w / 2);
 		r.y = static_cast<int>(mOwner->GetPosition().y - r.h / 2);
 
@@ -34,7 +35,7 @@ void SpriteComponent::Draw(SDL_Renderer* renderer)
 			mTexture,
 			nullptr,
 			&r,
-			-Math::ToDegrees(mOwner->GetRotation()),
+			-Math::ToDegrees(rot),
 			nullptr,
 			SDL_FLIP_NONE);
 	}
